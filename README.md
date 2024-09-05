@@ -5,32 +5,75 @@ Miguel Angel Flechas Tenorio
 
 
 # Autómata Finito Determinista (AFD) en Python para expresiones regulares
-Descripción
-Este programa implementa un Autómata Finito Determinista (AFD) para aceptar y reconocer las siguientes expresiones regulares:
 
-+ → Representa la operación de suma.
-++ → Representa el operador incremento.
-[0-9]+ → Representa números enteros de una o más cifras.
-([0-9]+) "." ([0-9])+ → Representa números flotantes con un punto decimal.
-Ejemplos:
-+ → Retorna el token SUMA.
-++ → Retorna el token INCREMENTO.
-123 → Retorna el token ENTERO.
-12.34 → Retorna el token FLOTANTE.
-El programa recibe una expresión regular como entrada y devuelve el token correspondiente a dicha expresión.
+Descripción del proyecto
+Este proyecto implementa un programa en LEX (Flex) para analizar si una expresión lambda en Python cumple con una gramática regular específica. El programa recibe un archivo de texto como entrada, analiza el contenido del archivo y determina si la expresión es aceptada o no.
 
-Ejecución
-Requisitos previos:
+El proyecto está diseñado para trabajar con expresiones lambda que tengan la siguiente estructura:
 
-Asegúrate de tener Python instalado en tu máquina.
-Instrucciones para ejecutar:
+square = lambda x: x ** 2
+print(square(3))
+El programa devolverá si la expresión es ACEPTADA o NO ACEPTADA según si coincide con la gramática predefinida.
 
-Abre una terminal o consola de comandos.
-Ejecuta el archivo AFD.py pasando la expresión regular como argumento:
+Estructura del proyecto
+lambda.l: Archivo LEX que contiene la definición de la gramática y las reglas de tokens.
+archivo.txt: Archivo de ejemplo que contiene una expresión lambda en Python.
+lex.yy.c: Archivo generado automáticamente por Flex al compilar lambda.l.
+lambda_program: Programa ejecutable generado después de compilar el archivo lex.yy.c.
+Requisitos
+Para ejecutar este proyecto, necesitas tener instalados los siguientes programas:
 
-python AFD.py +
-El programa devolverá el token correspondiente. Por ejemplo:
-SUMA
+Flex (LEX): Para analizar las expresiones.
+GCC: Compilador para compilar el código generado por Flex.
+Puedes instalarlos en un entorno basado en Linux como Kali Linux mediante los siguientes comandos:
+
+
+sudo apt-get install flex
+sudo apt-get install gcc
+Instrucciones de instalación y uso
+Clonar el repositorio o copiar el archivo: Asegúrate de tener el archivo lambda.l y el archivo de prueba archivo.txt.
+
+Compilar el archivo LEX: Ejecuta el siguiente comando para compilar el archivo .l usando Flex:
+
+
+flex lambda.l
+Esto generará un archivo llamado lex.yy.c.
+
+Compilar el archivo C generado: Usa GCC para compilar el archivo lex.yy.c y crear el programa ejecutable:
+
+
+gcc lex.yy.c -lfl -o lambda_program
+Ejecutar el programa: Una vez compilado, puedes ejecutar el programa proporcionando el archivo de entrada (archivo.txt) que contiene la expresión lambda:
+
+
+./lambda_program archivo.txt
+Resultado: El programa analizará el archivo y devolverá si la expresión es ACEPTADA o NO ACEPTADA, dependiendo de si cumple con la gramática esperada.
+
+Ejemplo de archivo archivo.txt
+Aquí tienes un ejemplo del archivo de entrada que el programa acepta:
+
+
+square = lambda x: x ** 2
+print(square(3))
+
+Detalles técnicos
+Tokens reconocidos
+El programa reconoce los siguientes tokens:
+
+lambda: La palabra clave lambda en Python.
+x: Una variable identificada en la expresión lambda.
+**: El operador de exponenciación en Python.
+Números: Los números enteros (como 2 en la expresión x ** 2).
+print: La función print de Python.
+Otros símbolos necesarios como =, :, (), etc.
+Flujo de análisis
+Asignación de la variable: La variable square es asignada con una función lambda.
+Estructura de la función lambda: La función lambda acepta un parámetro (x) y devuelve su cuadrado (x ** 2).
+Llamada a print: La función print invoca la variable square con un valor de prueba.
+
+Posibles salidas
+ACEPTA: Si la expresión lambda tiene la estructura correcta.
+NO ACEPTA: Si la expresión no sigue la gramática definida.
 
 # Gramática regular en LEX para expresiones lambda en Python
 Descripción
