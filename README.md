@@ -6,7 +6,7 @@ Miguel Angel Flechas Tenorio
 
 # Autómata Finito Determinista (AFD) en Python para expresiones regulares
 
-##Descripción del proyecto
+## Descripción del proyecto
 Este proyecto implementa un programa en LEX (Flex) para analizar si una expresión lambda en Python cumple con una gramática regular específica. El programa recibe un archivo de texto como entrada, analiza el contenido del archivo y determina si la expresión es aceptada o no.
 
 El proyecto está diseñado para trabajar con expresiones lambda que tengan la siguiente estructura:
@@ -15,13 +15,13 @@ square = lambda x: x ** 2
 print(square(3))
 El programa devolverá si la expresión es ACEPTADA o NO ACEPTADA según si coincide con la gramática predefinida.
 
-##Estructura del proyecto
+## Estructura del proyecto
 lambda.l: Archivo LEX que contiene la definición de la gramática y las reglas de tokens.
 archivo.txt: Archivo de ejemplo que contiene una expresión lambda en Python.
 lex.yy.c: Archivo generado automáticamente por Flex al compilar lambda.l.
 lambda_program: Programa ejecutable generado después de compilar el archivo lex.yy.c.
 
-##Requisitos
+## Requisitos
 Para ejecutar este proyecto, necesitas tener instalados los siguientes programas:
 
 Flex (LEX): Para analizar las expresiones.
@@ -31,7 +31,7 @@ Puedes instalarlos en un entorno basado en Linux como Kali Linux mediante los si
 sudo apt-get install flex
 sudo apt-get install gcc
 
-##Instrucciones de instalación y uso
+## Instrucciones de instalación y uso
 Clonar el repositorio o copiar el archivo: Asegúrate de tener el archivo lambda.l y el archivo de prueba archivo.txt.
 
 Compilar el archivo LEX: Ejecuta el siguiente comando para compilar el archivo .l usando Flex:
@@ -54,7 +54,7 @@ Aquí tienes un ejemplo del archivo de entrada que el programa acepta:
 square = lambda x: x ** 2
 print(square(3))
 
-##Detalles técnicos
+## Detalles técnicos
 Tokens reconocidos
 El programa reconoce los siguientes tokens:
 
@@ -69,7 +69,7 @@ Asignación de la variable: La variable square es asignada con una función lamb
 Estructura de la función lambda: La función lambda acepta un parámetro (x) y devuelve su cuadrado (x ** 2).
 Llamada a print: La función print invoca la variable square con un valor de prueba.
 
-Posibles salidas
+## Posibles salidas
 ACEPTA: Si la expresión lambda tiene la estructura correcta.
 NO ACEPTA: Si la expresión no sigue la gramática definida.
 
